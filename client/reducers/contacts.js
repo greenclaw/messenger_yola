@@ -7,4 +7,4 @@ function contacts(state = [], action){
 }
 
 
-export default contactscontacts;
+export default contacts;
