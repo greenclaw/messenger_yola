@@ -1,0 +1,53 @@
+#header {
+  background-color: #0C4C81;
+  padding: 40px;
+}
+
+#header .title {
+  margin-top: 0px;
+}
+
+#header a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#header a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.navbar{
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.course-bar {
+  padding: 30px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.currency-pair-title,
+.market-info .title,
+.market-info .price {
+  color: #fff;
+ }
+
+.currency-pair-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.market-info .title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.market-info .price {
+  font-size: 20px;
+  font-weight: 300;
+}
+.market-info .price:after {
+  content: ' $';
+}
