@@ -22,7 +22,7 @@ const router = (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute component={Messanger}></IndexRoute>
-        <Route path="/log_in" component={Authorization}></Route>
+        <Route path="/auth" component={Authorization}></Route>
         <Route path="/settings" component={Settings}></Route>
         <Route path="/profile" component={Profile}></Route>
       </Route>

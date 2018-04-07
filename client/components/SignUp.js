@@ -1,10 +1,7 @@
 import React from 'react';
 var firebase = require('../firebase.js')();
 
-import SignUp from './SignUp'
-import SignIn from './SignIn'
-
-var users = firebase.database().ref('users');
+ var users = firebase.database().ref('users');
 
 import { Link } from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
@@ -17,57 +14,41 @@ class Authorization extends React.Component{
     super(props);
     firebase.auth().useDeviceLanguage();
 
-    this.userSignIn = this.userSignIn.bind(this);
     this.userSignUp = this.userSignUp.bind(this);
 
     this.state = {
       login: '',
       password: '',
-      name: '',
-      confirmation: ''
+      name: ''
     }
   }
 
   userSignUp() {
     var t = this;
 
-    firebase.auth().createUserWithEmailAndPassword(this.state.login, this.state.password).then(function(result, error){
+    firebase.auth().createUserWithEmailAndPassword(this.state.login, this.state.password).then((result) => {
       // Handle Errors here.
+      var next_id = 0
+      console.log(result)
+      users.once('value', (snapshot) => {
+        next_id = snapshot.val().max_id  + 1
+        users.update({
+          max_id: next_id
+        })
+        users.push({
+          name: t.state.name,
+          uid: next_id
+        })
+      })
+    }).catch((error) => {
       if (!error) {
         console.log(t.state.login)
         console.log(t.state.password)
-        var next_id = 0;
-        users.once('value', function(snapshot){
-          next_id = snapshot.val().max_id  + 1
-          users.update({
-            max_id: next_id
-          })
-          users.push({
-            name: t.state.name,
-            uid: next_id
-          })
-          
-        })
-       
       } else {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log("Error code: " + errorCode);
         console.log("Error message: " + errorMessage);
-      }
-    });
-  }
-
-
-  userSignIn() {
-    firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => {
-      // Handle Errors here.
-      if (!error)
-      {
-        
-      } else {
-        var errorCode = error.code;
-        var errorMessage = error.message;
       }
     });
   }
@@ -124,39 +105,9 @@ class Authorization extends React.Component{
           type="submit"
           onClick={() => {this.userSignUp()}}
         >
-          Registration
+          Sign Up
         </button>
-        
-
-
-        {/* <input
-          type="login"
-          id="sign_in_login"
-          onChange={this.handleChange.bind(this)}
-          value={this.state.login}
-          placeholder="Login/Email"
-        >
-        </input>
-        <input
-          type="password"
-          id="sign_in_password"
-          onChange={this.handleChange.bind(this)}
-          value={this.state.password}
-          placeholder="Password"
-        >
-        </input>
-        <button 
-          type="button"
-          onClick={(event) => {this.userSignIn()}}
-        >
-          Login
-        </button> */}
-        {/* <Link type="button">
-          Google
-        </Link> */}
-        {/* <div type="button">
-          Login Vk
-        </div> */}
+    
       </div>
     )
   }
