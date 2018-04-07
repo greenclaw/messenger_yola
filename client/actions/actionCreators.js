@@ -14,9 +14,11 @@ export function updateChatList(chats){
 }
 
 
-export function updateChat(messages){
+
+export function updateChat(messages, id){
   return{
     type: "UPDATE_CHAT",
-    messages
+    messages,
+    id
   }
 }
