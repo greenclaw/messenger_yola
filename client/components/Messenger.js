@@ -30,6 +30,13 @@ class Messenger extends React.Component{
     this.setState({displayChats: !this.state.displayChats});
   }
 
+  switchMobileToMenu() {
+    this.setState({
+      displayMenu: true,
+      currentSelectedKey: ''
+    });
+  }
+
   render(){
     var menuClassName = classNames({
       'chatbox__user-list': true,
@@ -92,7 +99,7 @@ class Messenger extends React.Component{
           </div>
 
           <div className={chatWindowClassName}>
-            <Chat { ...this.props } />
+            <Chat { ...this.props} switchMobileToMenu={this.switchMobileToMenu.bind(this)} />
           </div>
         </div>
       </div>
