@@ -3,7 +3,7 @@ import React from 'react';
 import SignUp from './SignUp'
 import SignIn from './SignIn'
 
-import './Authorization.css'
+// import './Authorization.css'
 
 import { Link } from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
@@ -15,7 +15,7 @@ class Authorization extends React.Component{
   }
 
   render(){
-    
+
     return(
 
       <div className="container">
@@ -33,7 +33,7 @@ class Authorization extends React.Component{
                 <div className="clearfix"></div>
 
                 <SignIn></SignIn>
-                
+
               </div>
             </div>
           </div>

@@ -36,9 +36,9 @@ class Authorization extends React.Component{
         console.log(t.state.login)
         console.log(t.state.password)
         users.once('value', (snapshot) => {
-          
+
         })
-       
+
       } else {
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -59,7 +59,7 @@ class Authorization extends React.Component{
     event.preventDefault();
   }
 
-  
+
   handleChange(event) {
     console.log(event)
     let change = {}
@@ -67,7 +67,7 @@ class Authorization extends React.Component{
     this.setState(change)
   };
 
-  
+
   signInGoogle(event) {
     auth.signInWithPopup(provider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -85,7 +85,7 @@ class Authorization extends React.Component{
       var credential = error.credential;
       // ...
     });
-  } 
+  }
 
   render(){
 
@@ -99,7 +99,7 @@ class Authorization extends React.Component{
       password === '' ||
       login === '';
 
-    
+
     return(
 
       <div id="sectionA" className="tab-pane fade show active">
@@ -121,7 +121,7 @@ class Authorization extends React.Component{
               value={this.state.password}
               placeholder="Password" >
             </input>
-            <button 
+            <button
               type="submit"
               disabled={isInvalid}
             >
@@ -133,7 +133,7 @@ class Authorization extends React.Component{
         <div className="social-login">
           <p>- - - - - - - - - - - - - Sign In With - - - - - - - - - - - - - </p>
           <ul>
-              <li><button onClick={this.signInGoogle}><i className="fa fa-facebook"></i> Facebook</a></li>
+              <li><button onClick={this.signInGoogle}><i className="fa fa-facebook"></i> Facebook</button></li>
               <li><a href=""><i className="fa fa-google-plus"></i> Google+</a></li>
               <li><a href=""><i className="fa fa-twitter"></i> Twitter</a></li>
           </ul>

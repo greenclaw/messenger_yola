@@ -110,7 +110,7 @@ class Chat extends React.Component{
       });
       const messages = [ ...msg_array ].map((message, index) => {
         return (
-          <Message key={index} autor={message.author_name} text={message.text}/>
+          <Message key={index} author={message.author_name} text={message.text}/>
         )
       })
       return(

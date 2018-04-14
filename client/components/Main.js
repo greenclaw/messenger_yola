@@ -1,8 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router';
-var firebase = require('../firebase.js')();
-var users = firebase.database().ref('users');
+// var firebase = require('../firebase.js')();
+// var users = firebase.database().ref('users');
 
+import {database} from '../firebase/index';
+
+var users = database.ref('users');
 
 class Main extends React.Component{
 
@@ -22,9 +25,6 @@ class Main extends React.Component{
   render(){
     return(
       <div>
-        <h1>
-          <Link to="/">Yola Messanger</Link>
-        </h1>
         {React.cloneElement(this.props.children, this.props)}
       </div>
     )

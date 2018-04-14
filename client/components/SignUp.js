@@ -15,9 +15,9 @@ const INITIAL_STATE = {
   name: '',
   error: ''
 }
-  
+
 class Authorization extends React.Component{
-  
+
   constructor(props) {
     super(props);
 
@@ -58,9 +58,9 @@ class Authorization extends React.Component{
   }
 
   signUpGoogle(event) {
-    
+
   }
-  
+
   handleChange(event) {
     console.log(event)
     let change = {}
@@ -90,7 +90,7 @@ class Authorization extends React.Component{
     return(
       <div id="sectionB" className="tab-pane fade">
 			    <div className="innter-form">
-            
+
             <form className="sa-innate-form" onSubmit={this.userSignUp}>
               <input
                 type="login"
@@ -128,19 +128,19 @@ class Authorization extends React.Component{
                 placeholder="Password confirmation"
               >
               </input>
-              <button 
+              <button
                 type="submit"
                 disabled={isInvalid}
               >
                 Sign Up
               </button>
-              <p>By clicking Join now, you agree to hifriends's User Agreement, Privacy Policy, and Cookie Policy.</p>
+              <p>By clicking Join now, you agree to hifriends''s User Agreement, Privacy Policy, and Cookie Policy.</p>
             </form>
           </div>
           <div className="social-login">
             <p>- - - - - - - - - Register With - - - - - - - - - </p>
 			      <ul>
-              <li><button onClick={this.signUpGoogle}><i className="fa fa-facebook"></i> Facebook</a></li>
+              <li><button onClick={this.signUpGoogle}><i className="fa fa-facebook"></i> Facebook</button></li>
               <li><a href=""><i className="fa fa-google-plus"></i> Google+</a></li>
               <li><a href=""><i className="fa fa-twitter"></i> Twitter</a></li>
             </ul>
