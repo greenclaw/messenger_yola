@@ -8,6 +8,7 @@ import { Initial } from 'react-initial';
 class ChatListItem extends React.Component{
 
   changeChat(e){
+    console.log(this.props.chat.id)
     this.props.updateChatId(this.props.chat.id);
     this.props.contactListItemClick(e);
   }

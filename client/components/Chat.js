@@ -25,9 +25,10 @@ class Chat extends React.Component{
     var chat = [];
     var msg_ref = "";
     console.log(nextProps.current_chat)
-    if(nextState.current_chat != undefined && this.props.current_chat.id != nextProps.current_chat.id && nextState.current_chat.id != ""){
+    if(this.props.current_chat.id != nextProps.current_chat.id && nextProps.current_chat.id != undefined){
       chats.off('value', function(snap){
       });
+      console.log(nextProps.current_chat.id)
       chats.orderByChild("id").equalTo(nextProps.current_chat.id).on('value', function(snap){
         var msg_ref = "";
         console.log(snap.val())
@@ -38,11 +39,11 @@ class Chat extends React.Component{
         msg_ref += chat[0].key + "/messages"
         console.log(chat[0].value.messages)
         let messages = chat[0].value.messages;
-        t.props.updateChat(messages, chat[0].key);
+        t.props.updateChat(messages, chat[0].value["id"]);
         chats.child(msg_ref).on('value',  function(snap){
           let messages = snap.val();
-          console.log(messages);
-          t.props.updateChat(messages, chat[0].key);
+          console.log(chat[0].value["id"]);
+          t.props.updateChat(messages, chat[0].value["id"]);
         });
       });
 
@@ -80,12 +81,22 @@ class Chat extends React.Component{
 
   handleSubmit() {
     var t = this;
-    chats.child(this.props.current_chat.id).child('messages').push({
-      author_name: this.props.user_info.name,
-      uid: this.props.user_info.uid,
-      text: this.state.message,
-      created_at: Date.now()
+    var key = "";
+    console.log(this.props.current_chat.id)
+    chats.orderByChild("id").equalTo(parseInt(this.props.current_chat.id)).once('value', function(snapshot){
+      var keys = []
+      Object.keys(snapshot.val()).map((key, index) => {
+        keys.push(key);
       });
+      key = keys[0];
+      chats.child(key).child('messages').push({
+        author_name: t.props.user_info.name,
+        uid: t.props.user_info.uid,
+        text: t.state.message,
+        created_at: Date.now()
+        });
+    });
+
     this.setState({message: ''})
   }
 
@@ -105,6 +116,7 @@ class Chat extends React.Component{
     }
     else{
       let p = this.props
+      console.log(p.current_chat.messages)
       var msg_array = [];
       Object.keys(p.current_chat.messages).map((key, index) => {
         msg_array.push(p.current_chat.messages[key]);
