@@ -24,7 +24,8 @@ class Chat extends React.Component{
     var t = this;
     var chat = [];
     var msg_ref = "";
-    if(this.props.current_chat.id != nextProps.current_chat.id && nextState.chat_id != ""){
+    console.log(nextProps.current_chat)
+    if(this.props.current_chat.id != nextProps.current_chat.id && nextState.current_chat.id != ""){
       chats.off('value', function(snap){
       });
       chats.orderByChild("id").equalTo(nextProps.current_chat.id).on('value', function(snap){

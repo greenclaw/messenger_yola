@@ -3,7 +3,7 @@ function user_info(state = [], action){
     case "AUTHORIZE_USER":
       return {
         name: action.name,
-        uid: action. uid
+        uid: action.uid
       }
     default:
       return state;

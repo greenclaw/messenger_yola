@@ -58,7 +58,7 @@ class Messenger extends React.Component{
       'active': !this.state.displayChats
     });
 
-    console.log(this.props.chats);
+    console.log(this.props.user_info);
 
     return(
       <div className='container px-0 d-flex align-items-center main-container'>
@@ -66,12 +66,14 @@ class Messenger extends React.Component{
           <div className={menuClassName}>
             <ChatList
                 chats={this.props.chats}
+                user_info={this.props.user_info}
                 title="Contacts"
                 visible={!this.state.displayChats}
                 currentSelectedKey={this.state.currentSelectedKey}
                 contactListItemClick={this.contactListItemClick.bind(this)}/>
             <ChatList
                 chats={this.props.chats}
+                user_info={this.props.user_info}
                 title="Chats"
                 visible={this.state.displayChats}
                 currentSelectedKey={this.state.currentSelectedKey}
