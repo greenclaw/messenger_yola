@@ -1,6 +1,8 @@
 import React from 'react';
 import { auth, firebase} from '../firebase/index';
 
+// import { Link } from 'react-router';
+
 // import 
 
 var users = firebase.database().ref('users');
@@ -47,6 +49,7 @@ class SignIn extends React.Component{
         console.log('Error message: ' + errorMessage);
       }
     });
+    
   }
 
   
@@ -59,7 +62,7 @@ class SignIn extends React.Component{
 
   
   signInGoogle(event) {
-    auth.signInWithPopup(provider).then(function(result) {
+    auth.signInWithPopup(googleProvider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result.credential.accessToken;
       // The signed-in user info.
