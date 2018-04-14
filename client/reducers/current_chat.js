@@ -1,6 +1,6 @@
-var firebase = require('../firebase.js')();
-var chats = firebase.database().ref('chats');
+import {firebase} from '../firebase';
 
+var chats = firebase.database().ref('chats');
 
 
 function current_chat(state = [], action){
