@@ -50,7 +50,7 @@ class SignUp extends React.Component{
       console.log('current user: ' + currentUser.displayName)
 
       users.push({
-        name: currentUser.displayName,
+        name: t.state.name,
         uid: currentUser.uid
       })
         

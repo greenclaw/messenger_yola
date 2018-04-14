@@ -9,7 +9,21 @@ class WebcamCapture extends React.Component {
   
     capture() {
       const imageSrc = this.webcam.getScreenshot();
+      
     };
+
+    uploadImage(image) {
+        const imageName = Date.now();
+        const url = 'http://10.91.81.75:8001';
+        const formData = new FormData();
+        formData.append(imageName, image)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        return  post(url, formData,config)
+    }
   
     render() {
       return (
