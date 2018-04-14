@@ -57,6 +57,9 @@ class Authorization extends React.Component{
     event.preventDefault();
   }
 
+  signUpGoogle(event) {
+    
+  }
   
   handleChange(event) {
     console.log(event)
@@ -137,7 +140,7 @@ class Authorization extends React.Component{
           <div className="social-login">
             <p>- - - - - - - - - Register With - - - - - - - - - </p>
 			      <ul>
-              <li><a href=""><i className="fa fa-facebook"></i> Facebook</a></li>
+              <li><button onClick={this.signUpGoogle}><i className="fa fa-facebook"></i> Facebook</a></li>
               <li><a href=""><i className="fa fa-google-plus"></i> Google+</a></li>
               <li><a href=""><i className="fa fa-twitter"></i> Twitter</a></li>
             </ul>
