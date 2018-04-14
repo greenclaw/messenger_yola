@@ -4,7 +4,7 @@ import './style.css';
 
 //import components
 import App from './components/App';
-import Messanger from './components/Messanger';
+import Messenger from './components/Messenger';
 import Authorization from './components/Authorization';
 import Settings from './components/Settings';
 import Profile from './components/Profile';
@@ -22,8 +22,8 @@ const router = (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Messanger}></IndexRoute>
-        <Route path="/log_in" component={Authorization}></Route>
+        <IndexRoute component={Messenger}></IndexRoute>
+        <Route path="/auth" component={Authorization}></Route>
         <Route path="/settings" component={Settings}></Route>
         <Route path="/profile" component={Profile}></Route>
       </Route>

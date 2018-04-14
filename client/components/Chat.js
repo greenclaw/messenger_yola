@@ -2,11 +2,11 @@ import React from 'react';
 import Message from './Message';
 import { Initial } from 'react-initial';
 
-var firebase = require('../firebase.js')();
+import { database }  from '../firebase/index'
 
-var users = firebase.database().ref('users');
+var users = database.ref('users');
 
-var chats = firebase.database().ref('chats');
+var chats = database.ref('chats');
 
 class Chat extends React.Component{
 
