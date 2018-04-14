@@ -1,7 +1,8 @@
 import React from 'react';
-import { auth, firebase } from '../firebase/index';
+import { auth, database, firebase } from '../firebase/index';
 
-var users = firebase.database().ref('users');
+var users = database.ref('users');
+var storageRef = firebase.storage().ref('/users');
 
 import { Link } from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
@@ -16,7 +17,7 @@ const INITIAL_STATE = {
   error: ''
 }
   
-class Authorization extends React.Component{
+class SignUp extends React.Component{
   
   constructor(props) {
     super(props);
@@ -27,23 +28,32 @@ class Authorization extends React.Component{
   }
 
   userSignUp(event) {
+    event.preventDefault();
     var t = this;
 
-    auth.createUserWithEmailAndPassword(this.state.login, this.state.password).then((result) => {
+    auth.doCreateUserWithEmailAndPassword(this.state.login, this.state.password).then((result) => {
       // Handle Errors here.
-      var next_id = 0
-      console.log(result)
-      users.once('value', (snapshot) => {
-        next_id = snapshot.val().max_id  + 1
-        users.update({
-          max_id: next_id
-        })
-        users.push({
-          name: t.state.name,
-          uid: next_id
-        })
+      // var next_id = 0
+
+
+      var currentUser = firebase.auth().currentUser;
+      currentUser.updateProfile({
+        displayName: t.state.name
+      }).then(() => {
+        console.log("display name updated successfull");
+      }).catch((error) => {
+        console.error('display name update with error: ' + error)
       })
+
+      console.log('current user: ' + currentUser.displayName)
+
+      users.push({
+        name: currentUser.displayName,
+        uid: currentUser.uid
+      })
+        
     }).catch((error) => {
+      this.setState({error})
       if (!error) {
         console.log(t.state.login)
         console.log(t.state.password)
@@ -54,10 +64,22 @@ class Authorization extends React.Component{
         console.log('Error message: ' + errorMessage);
       }
     });
-    event.preventDefault();
+
   }
 
   signUpGoogle(event) {
+    
+  }
+
+  uploadPhoto(file) {
+    var currentUser = firebase.auth().currentUser;
+    var photoRef = storageRef.child(file.name);
+    photoRef.put(file).then((snapshot) => {
+
+      currentUser.updateProfile({
+        photoRef: photoRef.fullPath
+      });
+    })
     
   }
   
@@ -68,9 +90,9 @@ class Authorization extends React.Component{
     this.setState(change)
   }
 
-  onSubmit(event) {
-    event.preventDefault();
-  }
+  // onSubmit(event) {
+  //   event.preventDefault();
+  // }
 
   render(){
     const {
@@ -140,9 +162,7 @@ class Authorization extends React.Component{
           <div className="social-login">
             <p>- - - - - - - - - Register With - - - - - - - - - </p>
 			      <ul>
-              <li><button onClick={this.signUpGoogle}><i className="fa fa-facebook"></i> Facebook</a></li>
-              <li><a href=""><i className="fa fa-google-plus"></i> Google+</a></li>
-              <li><a href=""><i className="fa fa-twitter"></i> Twitter</a></li>
+              <li><button onClick={this.signUpGoogle}><i className="fa fa-google-plus"></i> Google+</button></li>
             </ul>
           </div>
         </div>
@@ -151,4 +171,4 @@ class Authorization extends React.Component{
   }
 };
 
-export default Authorization;
+export default SignUp;

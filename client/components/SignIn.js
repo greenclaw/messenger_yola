@@ -1,8 +1,7 @@
 import React from 'react';
 import { auth, firebase} from '../firebase/index';
 
-import SignUp from './SignUp'
-import SignIn from './SignIn'
+// import 
 
 var users = firebase.database().ref('users');
 
@@ -18,33 +17,25 @@ const INITIAL_STATE = {
   error: ''
 }
 
-class Authorization extends React.Component{
+class SignIn extends React.Component{
 
   constructor(props) {
     super(props);
 
     this.userSignIn = this.userSignIn.bind(this);
 
-    this.state = {...INITIAL_STATE}
+    this.state =  {...INITIAL_STATE}
   }
 
   userSignIn(event) {
+    event.preventDefault();
     var t = this;
-    auth.signInWithEmailAndPassword(email, password).then((result) => {
+    auth.doSignInWithEmailAndPassword(email, password).then((result) => {
       // Handle Errors here.
-      if (!error) {
-        console.log(t.state.login)
-        console.log(t.state.password)
-        users.once('value', (snapshot) => {
-          
-        })
+      console.log('User signed in')
+      console.log(t.state.login)
+      console.log(t.state.password)
        
-      } else {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log("Error code: " + errorCode);
-        console.log("Error message: " + errorMessage);
-      }
     }).catch((error) => {
       if (!error) {
         console.log(t.state.login)
@@ -56,7 +47,6 @@ class Authorization extends React.Component{
         console.log('Error message: ' + errorMessage);
       }
     });
-    event.preventDefault();
   }
 
   
@@ -131,11 +121,9 @@ class Authorization extends React.Component{
         </div>
 
         <div className="social-login">
-          <p>- - - - - - - - - - - - - Sign In With - - - - - - - - - - - - - </p>
+          <p>- - - - - - - - - -  Sign In With  - - - - - - - - - - </p>
           <ul>
-              <li><button onClick={this.signInGoogle}><i className="fa fa-facebook"></i> Facebook</a></li>
-              <li><a href=""><i className="fa fa-google-plus"></i> Google+</a></li>
-              <li><a href=""><i className="fa fa-twitter"></i> Twitter</a></li>
+              <li><button onClick={this.signInGoogle}><i className="fa fa-google-plus"></i> Google+</button></li>
           </ul>
         </div>
       </div>
@@ -143,4 +131,4 @@ class Authorization extends React.Component{
   }
 };
 
-export default Authorization;
+export default SignIn;

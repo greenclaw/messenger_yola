@@ -1,6 +1,4 @@
 import React from 'react';
-var firebase = require('../firebase.js')();
-var chats = firebase.database().ref('chats');
 
 
 class ChatListItem extends React.Component{
