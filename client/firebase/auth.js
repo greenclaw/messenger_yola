@@ -23,3 +23,7 @@ export const doPasswordReset = (email) =>
 export const doPasswordUpdate = (password) =>
   auth.currentUser.updatePassword(password);
 
+
+export const signInWithPopup = (provider) => 
+  auth.signInWithPopup(provider);
+
