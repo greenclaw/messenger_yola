@@ -34,7 +34,8 @@
   background-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-.auth-form input {
+.auth-form input,
+.input {
   font-weight: 300;
   font-size: 16px;
   padding: 5px;
@@ -47,7 +48,8 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-.auth-form input:focus {
+.auth-form input:focus,
+.input:focus {
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 

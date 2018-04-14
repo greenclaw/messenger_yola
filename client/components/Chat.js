@@ -137,7 +137,7 @@ class Chat extends React.Component{
               <Initial name={"Roman Varnava"} charCount={2} fontSize={14} width={30} height={30}/>
             </div>
             <div className="name">
-              Roman Varnava
+              Nickname
             </div>
           </div>
           <div className="messageList">

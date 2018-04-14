@@ -107,10 +107,10 @@ class ChatList extends React.Component{
 
     return (
       <div className={listClassName}>
-      <input type="text" placeholder="Type contact id" value={this.state.contact_id} onChange={this.handleChange}
-              onKeyDown={this.handleKeyDown}/>
         <h1>{this.props.title}</h1>
         <div className="contact-list chat-list">
+          <input className="input" type="text" placeholder="Type contact id" value={this.state.contact_id} onChange={this.handleChange}
+              onKeyDown={this.handleKeyDown}/>
           {chatList}
         </div>
       </div>
