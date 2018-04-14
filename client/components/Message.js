@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 
 class Message extends React.Component{
@@ -7,18 +8,18 @@ class Message extends React.Component{
   }
 
   render(){
+    var chatboxMessageClassName = classNames({
+      'chatbox__messages__user-message': true,
+      'right': true
+    });
     return (
-      <div>
-        <div>
-          <div>
-            {this.props.autor}
-          </div>
-          <div>
-            {this.props.text}
-          </div>
+      <div className={chatboxMessageClassName}>
+        <div className="chatbox__messages__user-message--ind-message">
+          <div className="name">{this.props.author}</div>
+          <div className="text">{this.props.text}</div>
         </div>
       </div>
-    )
+    );
   }
 };
 

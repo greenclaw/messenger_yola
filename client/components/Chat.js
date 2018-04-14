@@ -1,5 +1,6 @@
 import React from 'react';
 import Message from './Message';
+import { Initial } from 'react-initial';
 
 var firebase = require('../firebase.js')();
 
@@ -113,18 +114,25 @@ class Chat extends React.Component{
         )
       })
       return(
-        <div>
-          <div>
-            <div>
-              {messages}
+        <div className="chatbox__messages">
+          <div className="chatbox_profile">
+            <div className="d-inline-block d-sm-none btn-back" onClick={this.props.switchMobileToMenu}>
+              <i className="fas fa-angle-left"></i>
+              <span className="text-back">Back</span>
             </div>
-            <div className="form">
-              <input type="text" placeholder="Message.." value={this.state.message} onChange={this.handleChange}
-                      onKeyDown={this.handleKeyDown}/>
-              <button className="button" onClick={this.handleSubmit} >
-                Send
-              </button>
+            <div className="initials-wrapper">
+              <Initial name={"Roman Varnava"} charCount={2} fontSize={14} width={30} height={30}/>
             </div>
+            <div className="name">
+              Roman Varnava
+            </div>
+          </div>
+          <div className="messageList">
+            {messages}
+          </div>
+          <div className="chatform">
+            <input type="text" placeholder="Message.." value={this.state.message} onChange={this.handleChange}
+                    onKeyDown={this.handleKeyDown}/>
           </div>
         </div>
       )

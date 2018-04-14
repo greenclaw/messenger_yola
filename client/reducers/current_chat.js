@@ -8,9 +8,14 @@ function current_chat(state = [], action){
   switch (action.type) {
     case "LOAD_CHAT":
       return {
-        messages: action.messages
+        messages: action.messages,
+        id: state.id
       }
-  
+    case "UPDATE_CHAT_ID":
+      return {
+        messages: {},
+        id: action.id
+      }
     case "UPDATE_CHAT":
       console.log(action);
 
