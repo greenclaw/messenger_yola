@@ -68,12 +68,14 @@ class Messenger extends React.Component{
                 chats={this.props.chats}
                 title="Contacts"
                 visible={!this.state.displayChats}
+                updateChatId={this.props.updateChatId}
                 currentSelectedKey={this.state.currentSelectedKey}
                 contactListItemClick={this.contactListItemClick.bind(this)}/>
             <ChatList
                 chats={this.props.chats}
                 title="Chats"
                 visible={this.state.displayChats}
+                updateChatId={this.props.updateChatId}
                 currentSelectedKey={this.state.currentSelectedKey}
                 contactListItemClick={this.contactListItemClick.bind(this)}/>
 

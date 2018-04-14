@@ -107,7 +107,7 @@ class Authorization extends React.Component{
                 id="sign_up_login"
                 onChange={this.handleChange.bind(this)}
                 value={this.state.login}
-                placeholder="Login/Email"
+                placeholder="Login / Email"
               >
               </input>
               <input
@@ -130,20 +130,15 @@ class Authorization extends React.Component{
               </input>
               <button
                 type="submit"
+                className="button"
                 disabled={isInvalid}
               >
                 Sign Up
               </button>
-              <p>By clicking Join now, you agree to hifriends''s User Agreement, Privacy Policy, and Cookie Policy.</p>
             </form>
           </div>
-          <div className="social-login">
-            <p>- - - - - - - - - Register With - - - - - - - - - </p>
-			      <ul>
-              <li><button onClick={this.signUpGoogle}><i className="fa fa-facebook"></i> Facebook</button></li>
-              <li><a href=""><i className="fa fa-google-plus"></i> Google+</a></li>
-              <li><a href=""><i className="fa fa-twitter"></i> Twitter</a></li>
-            </ul>
+          <div className="mt-3">
+            <button className="social-login social-login-google" onClick={this.signUpGoogle}><img className="ico-google" src="google.png" /> Sign Up with Google+</button>
           </div>
         </div>
 

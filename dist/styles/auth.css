@@ -1,0 +1,70 @@
+.auth-type-switcher.nav-tabs .nav-item .switch {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.auth-type-switcher {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 0;
+  width: 100%;
+  color: #fff;
+}
+
+.auth-type-switcher .switch {
+  cursor: pointer;
+  width: 100%;
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
+  border: 0;
+  border-radius: 0;
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.auth-type-switcher .switch:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.auth-type-switcher .switch.active {
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.auth-type-switcher .switch.active:hover {
+  cursor: default;
+  background-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.auth-form input {
+  font-weight: 300;
+  font-size: 16px;
+  padding: 5px;
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  outline: none;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.auth-form input:focus {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.social-login {
+  padding: 10px;
+  border: 0;
+  border-radius: 0;
+  background-color: #fff;
+}
+
+.social-login-google {
+  background-color: #fff;
+  color: #4885ed;
+}
+
+.social-login-google:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}

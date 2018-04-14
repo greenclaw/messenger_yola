@@ -111,7 +111,7 @@ class Authorization extends React.Component{
               id="sign_in_login"
               onChange={this.handleChange.bind(this)}
               value={this.state.login}
-              placeholder="Login/Email" >
+              placeholder="Login / Email" >
             </input>
             <input
               type="password"
@@ -124,19 +124,15 @@ class Authorization extends React.Component{
             <button
               type="submit"
               disabled={isInvalid}
+              className="button"
             >
               Sign In
             </button>
           </form>
         </div>
 
-        <div className="social-login">
-          <p>- - - - - - - - - - - - - Sign In With - - - - - - - - - - - - - </p>
-          <ul>
-              <li><button onClick={this.signInGoogle}><i className="fa fa-facebook"></i> Facebook</button></li>
-              <li><a href=""><i className="fa fa-google-plus"></i> Google+</a></li>
-              <li><a href=""><i className="fa fa-twitter"></i> Twitter</a></li>
-          </ul>
+        <div className="mt-3">
+          <button className="social-login social-login-google" onClick={this.signInGoogle}><img className="ico-google" src="google.png" /> Sign In with Google+</button>
         </div>
       </div>
     )

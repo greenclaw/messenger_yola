@@ -9,6 +9,7 @@ class ChatListItem extends React.Component{
 
   changeChat(){
     this.props.updateChatId(this.props.chat.id);
+    this.props.contactListItemClick();
   }
 
   render(){
@@ -27,7 +28,7 @@ class ChatListItem extends React.Component{
     });
 
     return (
-      <div className={chatboxUserWrapperClassName} data-type={this.props.title} data-id={this.props.chat.id} onClick={this.props.contactListItemClick}>
+      <div className={chatboxUserWrapperClassName} data-type={this.props.title} data-id={this.props.chat.id} onClick={this.changeChat.bind(this)}>
         <div className='chatbox__user'>
           <div className="initials-wrapper">
             <Initial name={"Title"} charCount={2} fontSize={18} width={40} height={40}/>
