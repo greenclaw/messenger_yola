@@ -1,6 +1,6 @@
-import {auth} from './auth';
-import {database } from './db';
-import {firebase} from './firebase';
+import * as auth from './auth';
+import { database } from './db';
+import { firebase } from './firebase';
 
 
 export {

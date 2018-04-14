@@ -2,9 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 // var firebase = require('../firebase.js')();
 // var users = firebase.database().ref('users');
-
 import {database} from '../firebase/index';
-
 var users = database.ref('users');
 
 class Main extends React.Component{

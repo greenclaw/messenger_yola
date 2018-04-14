@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 
 
-class Single extends React.Component{
+class Settings extends React.Component{
 
   render(){
     return(
@@ -12,4 +12,4 @@ class Single extends React.Component{
   }
 };
 
-export default Single;
+export default Settings;

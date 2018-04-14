@@ -27,3 +27,6 @@ export const doPasswordUpdate = (password) =>
 export const signInWithPopup = (provider) => 
   auth.signInWithPopup(provider);
 
+
+export const signInWithRedirect = (provider) => 
+  auth.signInWithRedirect(provider);
