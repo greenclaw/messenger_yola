@@ -1,8 +1,9 @@
 import React from 'react';
 import { auth, firebase} from '../firebase/index';
 
-import SignUp from './SignUp'
-import SignIn from './SignIn'
+// import { Link } from 'react-router';
+
+// import
 
 var users = firebase.database().ref('users');
 
@@ -18,33 +19,25 @@ const INITIAL_STATE = {
   error: ''
 }
 
-class Authorization extends React.Component{
+class SignIn extends React.Component{
 
   constructor(props) {
     super(props);
 
     this.userSignIn = this.userSignIn.bind(this);
 
-    this.state = {...INITIAL_STATE}
+    this.state =  {...INITIAL_STATE}
   }
 
   userSignIn(event) {
+    event.preventDefault();
     var t = this;
-    auth.signInWithEmailAndPassword(email, password).then((result) => {
+    auth.doSignInWithEmailAndPassword(email, password).then((result) => {
       // Handle Errors here.
-      if (!error) {
-        console.log(t.state.login)
-        console.log(t.state.password)
-        users.once('value', (snapshot) => {
+      console.log('User signed in')
+      console.log(t.state.login)
+      console.log(t.state.password)
 
-        })
-
-      } else {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log("Error code: " + errorCode);
-        console.log("Error message: " + errorMessage);
-      }
     }).catch((error) => {
       if (!error) {
         console.log(t.state.login)
@@ -56,7 +49,7 @@ class Authorization extends React.Component{
         console.log('Error message: ' + errorMessage);
       }
     });
-    event.preventDefault();
+
   }
 
 
@@ -69,7 +62,7 @@ class Authorization extends React.Component{
 
 
   signInGoogle(event) {
-    auth.signInWithPopup(provider).then(function(result) {
+    auth.signInWithPopup(googleProvider).then(function(result) {
       // This gives you a Google Access Token. You can use it to access the Google API.
       var token = result.credential.accessToken;
       // The signed-in user info.
@@ -111,7 +104,7 @@ class Authorization extends React.Component{
               id="sign_in_login"
               onChange={this.handleChange.bind(this)}
               value={this.state.login}
-              placeholder="Login/Email" >
+              placeholder="Login / Email" >
             </input>
             <input
               type="password"
@@ -124,23 +117,19 @@ class Authorization extends React.Component{
             <button
               type="submit"
               disabled={isInvalid}
+              className="button"
             >
               Sign In
             </button>
           </form>
         </div>
 
-        <div className="social-login">
-          <p>- - - - - - - - - - - - - Sign In With - - - - - - - - - - - - - </p>
-          <ul>
-              <li><button onClick={this.signInGoogle}><i className="fa fa-facebook"></i> Facebook</button></li>
-              <li><a href=""><i className="fa fa-google-plus"></i> Google+</a></li>
-              <li><a href=""><i className="fa fa-twitter"></i> Twitter</a></li>
-          </ul>
+        <div className="mt-3">
+          <button className="social-login social-login-google" onClick={this.signInGoogle}><img className="ico-google" src="google.png" /> Sign In with Google+</button>
         </div>
       </div>
     )
   }
 };
 
-export default Authorization;
+export default SignIn;

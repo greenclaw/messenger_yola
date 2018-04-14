@@ -198,19 +198,19 @@ html, body {
 }
 
 ::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 :-moz-placeholder {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 ::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 :-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 
@@ -310,4 +310,23 @@ html, body {
   overflow: hidden;
   overflow-y: scroll;
   height: calc(100% - 45px - 46.78px);
+}
+
+.button {
+  margin-top: 5px;
+  padding: 5px 15px;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+}
+
+.ico-google {
+  width: 30px;
+  height: 30px;
 }
