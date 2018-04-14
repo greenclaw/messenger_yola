@@ -1,6 +1,8 @@
 import React from 'react';
 import { auth, database, firebase } from '../firebase/index';
 
+import WebcamCapture from './WebcamCapture';
+
 var users = database.ref('users');
 var storageRef = firebase.storage().ref('/users');
 
