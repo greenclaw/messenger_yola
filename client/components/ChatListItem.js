@@ -7,9 +7,9 @@ import { Initial } from 'react-initial';
 
 class ChatListItem extends React.Component{
 
-  changeChat(){
+  changeChat(e){
     this.props.updateChatId(this.props.chat.id);
-    this.props.contactListItemClick();
+    this.props.contactListItemClick(e);
   }
 
   render(){
