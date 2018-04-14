@@ -24,10 +24,10 @@ class Chat extends React.Component{
     var t = this;
     var chat = [];
     var msg_ref = "";
-    if(this.state.chat_id != nextState.chat_id && nextState.chat_id != ""){
+    if(this.props.current_chat.id != nextProps.current_chat.id && nextState.chat_id != ""){
       chats.off('value', function(snap){
       });
-      chats.orderByChild("id").equalTo(nextState.chat_id).on('value', function(snap){
+      chats.orderByChild("id").equalTo(nextProps.current_chat.id).on('value', function(snap){
         var msg_ref = "";
         console.log(snap.val())
         var value = snap.val();
@@ -110,7 +110,7 @@ class Chat extends React.Component{
       });
       const messages = [ ...msg_array ].map((message, index) => {
         return (
-          <Message key={index} autor={message.author_name} text={message.text}/>
+          <Message key={index} author={message.author_name} text={message.text}/>
         )
       })
       return(
